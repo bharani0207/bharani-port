@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -95,17 +95,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex items-center justify-center"
           >
-            <Button
-              variant="hero"
-              size="xl"
-              onClick={() => handleScroll("#contact")}
-              className="group"
-            >
-              <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Hire Me
-            </Button>
             <a
               href="/resume.pdf"
               target="_blank"
