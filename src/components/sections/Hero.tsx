@@ -9,7 +9,6 @@ type NavbarProps = {
 export function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Services removed ❌
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
