@@ -4,7 +4,7 @@ import { Loader } from "@/components/layout/Loader";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
-import { Services } from "@/components/sections/Services";
+// ❌ Removed Services import
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
@@ -53,7 +53,7 @@ const Index = () => {
           <Hero />
           <About />
           <Projects />
-          <Services />
+          {/* ❌ Removed <Services /> */}
           <Contact />
         </main>
         <Footer />
