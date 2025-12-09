@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Palette, Zap, Database, Cloud, Smartphone } from "lucide-react";
+import { Code2, Palette, Zap, Database, Cloud, Smartphone, Layers, Box, Server, Braces, FileJson, Container, GitBranch, Figma as FigmaIcon, Cpu } from "lucide-react";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonaws, SiDocker, SiGraphql, SiTailwindcss, SiFigma } from "react-icons/si";
 import profileImage from "@/assets/profile.jpg";
 
 const skills = [
@@ -14,18 +15,18 @@ const skills = [
 ];
 
 const techStack = [
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Python", category: "Language" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "AWS", category: "Cloud" },
-  { name: "Docker", category: "DevOps" },
-  { name: "GraphQL", category: "API" },
-  { name: "Tailwind CSS", category: "Styling" },
-  { name: "Figma", category: "Design" },
+  { name: "React", category: "Frontend", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", category: "Frontend", icon: SiNextdotjs, color: "#000000" },
+  { name: "TypeScript", category: "Language", icon: SiTypescript, color: "#3178C6" },
+  { name: "Node.js", category: "Backend", icon: SiNodedotjs, color: "#339933" },
+  { name: "Python", category: "Language", icon: SiPython, color: "#3776AB" },
+  { name: "PostgreSQL", category: "Database", icon: SiPostgresql, color: "#4169E1" },
+  { name: "MongoDB", category: "Database", icon: SiMongodb, color: "#47A248" },
+  { name: "AWS", category: "Cloud", icon: SiAmazonaws, color: "#FF9900" },
+  { name: "Docker", category: "DevOps", icon: SiDocker, color: "#2496ED" },
+  { name: "GraphQL", category: "API", icon: SiGraphql, color: "#E10098" },
+  { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Figma", category: "Design", icon: SiFigma, color: "#F24E1E" },
 ];
 
 export function About() {
@@ -159,6 +160,7 @@ export function About() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   className="glass rounded-xl p-4 text-center hover-lift cursor-default group"
                 >
+                  <tech.icon className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{ color: tech.color }} />
                   <span className="block font-medium text-sm group-hover:text-primary transition-colors">
                     {tech.name}
                   </span>
