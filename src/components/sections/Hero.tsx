@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function Hero() {
+export default function Hero() {
   const handleScroll = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -66,8 +66,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-sora text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
           >
-            Hi, I'm{" "}
-            <span className="gradient-text">Bharanishwar P</span>
+            Hi, I'm <span className="gradient-text">BHARANISHWAR P</span>
             <br />
             <motion.span
               initial={{ opacity: 0 }}
@@ -85,9 +84,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            I craft exceptional digital experiences with modern technologies.
-            Specializing in React, Node.js, and cloud architecture to bring
-            your ideas to life.
+            I craft exceptional digital experiences using modern technologies like
+            React, Node.js, Cloud & Full-Stack development.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -106,17 +104,20 @@ export function Hero() {
               <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Hire Me
             </Button>
-            <Button
-              variant="heroOutline"
-              size="xl"
-              className="group"
+
+            {/* VIEW + DOWNLOAD RESUME */}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-primary px-6 py-3 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
             >
-              <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-              Download Resume
-            </Button>
+              <Download className="w-5 h-5" />
+              View / Download Resume
+            </a>
           </motion.div>
 
-          {/* Tech Stack Preview */}
+          {/* Tech Stack */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,19 +125,17 @@ export function Hero() {
             className="mt-16 flex items-center justify-center gap-3 flex-wrap"
           >
             <span className="text-sm text-muted-foreground">Tech Stack:</span>
-            {["React", "TypeScript", "Node.js", "PostgreSQL", "AWS"].map(
-              (tech, index) => (
-                <motion.span
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="px-3 py-1 text-sm font-medium rounded-full bg-secondary text-secondary-foreground"
-                >
-                  {tech}
-                </motion.span>
-              )
-            )}
+            {["React", "JavaScript", "Python", "Git", "SQL"].map((tech, index) => (
+              <motion.span
+                key={tech}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="px-3 py-1 text-sm font-medium rounded-full bg-secondary text-secondary-foreground"
+              >
+                {tech}
+              </motion.span>
+            ))}
           </motion.div>
         </div>
 
