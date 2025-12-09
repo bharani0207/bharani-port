@@ -106,18 +106,9 @@ export function Hero() {
               <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Hire Me
             </Button>
-            <Button
-              asChild
-              variant="heroOutline"
-              size="xl"
-              className="group"
-            >
-              <a
-                href="https://jumpshare.com/share/tpBoehydUeDMYilnSgsA"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+            <Button asChild variant="outline" size="lg">
+              <a href="/resume.pdf" download>
+                <Download className="mr-2 h-4 w-4" />
                 Download Resume
               </a>
             </Button>
