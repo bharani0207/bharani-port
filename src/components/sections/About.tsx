@@ -1,9 +1,13 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Palette, Zap, Database, Cloud, Smartphone } from "lucide-react";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazon, SiDocker, SiGraphql, SiTailwindcss, SiFigma } from "react-icons/si";
-import profileImage from "@/assets/profile.jpg";
+import {
+  Code2,
+  Palette,
+  Zap,
+  Database,
+  Cloud,
+  Smartphone,
+} from "lucide-react";
 
 const skills = [
   { name: "Frontend Development", level: 95, icon: Code2 },
@@ -15,22 +19,22 @@ const skills = [
 ];
 
 const techStack = [
-  { name: "React", category: "Frontend", icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", category: "Frontend", icon: SiNextdotjs, color: "#000000" },
-  { name: "TypeScript", category: "Language", icon: SiTypescript, color: "#3178C6" },
-  { name: "Node.js", category: "Backend", icon: SiNodedotjs, color: "#339933" },
-  { name: "Python", category: "Language", icon: SiPython, color: "#3776AB" },
-  { name: "PostgreSQL", category: "Database", icon: SiPostgresql, color: "#4169E1" },
-  { name: "MongoDB", category: "Database", icon: SiMongodb, color: "#47A248" },
-  { name: "AWS", category: "Cloud", icon: SiAmazon, color: "#FF9900" },
-  { name: "Docker", category: "DevOps", icon: SiDocker, color: "#2496ED" },
-  { name: "GraphQL", category: "API", icon: SiGraphql, color: "#E10098" },
-  { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Figma", category: "Design", icon: SiFigma, color: "#F24E1E" },
+  { name: "React", category: "Frontend", icon: Code2, color: "#61DAFB" },
+  { name: "Next.js", category: "Frontend", icon: Code2, color: "#000000" },
+  { name: "TypeScript", category: "Language", icon: Code2, color: "#3178C6" },
+  { name: "Node.js", category: "Backend", icon: Database, color: "#339933" },
+  { name: "Python", category: "Language", icon: Code2, color: "#3776AB" },
+  { name: "PostgreSQL", category: "Database", icon: Database, color: "#4169E1" },
+  { name: "MongoDB", category: "Database", icon: Database, color: "#47A248" },
+  { name: "AWS", category: "Cloud", icon: Cloud, color: "#FF9900" },
+  { name: "Docker", category: "DevOps", icon: Cloud, color: "#2496ED" },
+  { name: "GraphQL", category: "API", icon: Zap, color: "#E10098" },
+  { name: "Tailwind CSS", category: "Styling", icon: Palette, color: "#06B6D4" },
+  { name: "Figma", category: "Design", icon: Palette, color: "#F24E1E" },
 ];
 
 export function About() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -50,7 +54,7 @@ export function About() {
             Crafting Digital Excellence
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            With 5+ years of experience in software development, I transform
+            With 1+ years of experience in software development, I transform
             complex problems into elegant, user-friendly solutions.
           </p>
         </motion.div>
@@ -91,16 +95,15 @@ export function About() {
                 My Journey
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                I started my coding journey in 2018, fascinated by the power of
-                technology to solve real-world problems. Since then, I've worked
-                with startups and enterprises, building everything from MVPs to
-                large-scale applications.
+                I started my coding journey fascinated by how technology can
+                solve real-world problems. Since then, I've been building
+                applications, learning modern tools, and constantly improving my
+                craft.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                I believe in writing clean, maintainable code and staying at the
-                forefront of technology. When I'm not coding, you'll find me
-                contributing to open-source projects or exploring new tech
-                trends.
+                I focus on writing clean, maintainable code and love exploring
+                new technologies. When I'm not coding, I'm usually learning,
+                experimenting, or refining my projects.
               </p>
             </div>
 
@@ -160,7 +163,10 @@ export function About() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   className="glass rounded-xl p-4 text-center hover-lift cursor-default group"
                 >
-                  <tech.icon className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{ color: tech.color }} />
+                  <tech.icon
+                    className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"
+                    style={{ color: tech.color }}
+                  />
                   <span className="block font-medium text-sm group-hover:text-primary transition-colors">
                     {tech.name}
                   </span>
