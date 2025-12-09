@@ -107,12 +107,19 @@ export function Hero() {
               Hire Me
             </Button>
             <Button
+              asChild
               variant="heroOutline"
               size="xl"
               className="group"
             >
-              <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-              Download Resume
+              <a
+                href="https://jumpshare.com/share/tpBoehydUeDMYilnSgsA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+                Download Resume
+              </a>
             </Button>
           </motion.div>
 
