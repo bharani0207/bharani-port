@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Palette, Zap, Database, Cloud, Smartphone, Layers, Box, Server, Braces, FileJson, Container, GitBranch, Figma as FigmaIcon, Cpu } from "lucide-react";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonaws, SiDocker, SiGraphql, SiTailwindcss, SiFigma } from "react-icons/si";
+import { Code2, Palette, Zap, Database, Cloud, Smartphone } from "lucide-react";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazon, SiDocker, SiGraphql, SiTailwindcss, SiFigma } from "react-icons/si";
 import profileImage from "@/assets/profile.jpg";
 
 const skills = [
@@ -22,7 +22,7 @@ const techStack = [
   { name: "Python", category: "Language", icon: SiPython, color: "#3776AB" },
   { name: "PostgreSQL", category: "Database", icon: SiPostgresql, color: "#4169E1" },
   { name: "MongoDB", category: "Database", icon: SiMongodb, color: "#47A248" },
-  { name: "AWS", category: "Cloud", icon: SiAmazonaws, color: "#FF9900" },
+  { name: "AWS", category: "Cloud", icon: SiAmazon, color: "#FF9900" },
   { name: "Docker", category: "DevOps", icon: SiDocker, color: "#2496ED" },
   { name: "GraphQL", category: "API", icon: SiGraphql, color: "#E10098" },
   { name: "Tailwind CSS", category: "Styling", icon: SiTailwindcss, color: "#06B6D4" },
