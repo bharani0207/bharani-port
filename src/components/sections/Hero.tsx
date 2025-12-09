@@ -1,154 +1,78 @@
-import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Link } from "react-scroll";
+import { Menu, X } from "lucide-react";
 
-export function Hero() {
-  const handleScroll = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+export function Navbar({ isDark, toggleTheme }: any) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { label: "Home", href: "home" },
+    { label: "About", href: "about" },
+    { label: "Projects", href: "projects" },
+    { label: "Contact", href: "contact" },
+  ];
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-      </div>
+    <nav className="fixed w-full top-0 z-50 bg-background/60 backdrop-blur-md border-b border-foreground/10">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 className="font-bold text-xl">Bharanishwar</h1>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-medium text-foreground">
-              Available for new projects
-            </span>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-sora text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
-          >
-            Hi, I'm{" "}
-            <span className="gradient-text">Bharanishwar P</span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+        {/* Desktop Nav */}
+        <div className="hidden md:flex space-x-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              smooth={true}
+              duration={600}
+              className="cursor-pointer text-foreground hover:text-primary transition-colors"
             >
-              Full-Stack Developer
-            </motion.span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-          >
-            I craft exceptional digital experiences with modern technologies.
-            Specializing in React, Node.js, and cloud architecture to bring
-            your ideas to life.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center justify-center"
-          >
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-primary px-8 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </a>
-          </motion.div>
-
-          {/* Tech Stack Preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 flex items-center justify-center gap-3 flex-wrap"
-          >
-            <span className="text-sm text-muted-foreground">Tech Stack:</span>
-            {["React", "TypeScript", "Node.js", "PostgreSQL", "AWS"].map(
-              (tech, index) => (
-                <motion.span
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="px-3 py-1 text-sm font-medium rounded-full bg-secondary text-secondary-foreground"
-                >
-                  {tech}
-                </motion.span>
-              )
-            )}
-          </motion.div>
+              {item.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          onClick={() => handleScroll("#about")}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        {/* Theme Toggle (Optional if you use one) */}
+        <button
+          onClick={toggleTheme}
+          className="hidden md:inline-flex ml-4 text-sm px-3 py-1 border rounded-full"
         >
-          <span className="text-sm font-medium">Scroll down</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ArrowDown className="w-5 h-5" />
-          </motion.div>
-        </motion.button>
+          {isDark ? "Light Mode" : "Dark Mode"}
+        </button>
+
+        {/* Mobile Menu */}
+        <button
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X /> : <Menu />}
+        </button>
       </div>
-    </section>
+
+      {/* Mobile Dropdown */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col items-center space-y-4 py-4 bg-background border-t border-foreground/10">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              smooth={true}
+              duration={600}
+              className="cursor-pointer text-lg text-foreground hover:text-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <button
+            onClick={toggleTheme}
+            className="text-sm px-3 py-1 border rounded-full"
+          >
+            {isDark ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
+      )}
+    </nav>
   );
 }
