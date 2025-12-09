@@ -106,12 +106,15 @@ export function Hero() {
               <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Hire Me
             </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="/resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-primary px-8 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
+            </a>
           </motion.div>
 
           {/* Tech Stack Preview */}
