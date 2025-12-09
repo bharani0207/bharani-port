@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Loader } from "@/components/layout/Loader";
-import Hero from "@/components/sections/Hero";  // 👈 Correct import (NO curly braces)
+import Hero from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
+import { Services } from "@/components/sections/Services";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
@@ -12,26 +13,47 @@ const Index = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
+    // Check for saved theme preference
     const savedTheme = localStorage.getItem("theme");
-    setIsDark(savedTheme === "dark" || !savedTheme);
-    const timer = setTimeout(() => setIsLoading(false), 1500);
+    if (savedTheme) {
+      setIsDark(savedTheme === "dark");
+    } else {
+      // Default to dark theme
+      setIsDark(true);
+    }
+
+    // Simulate initial load
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    // Apply theme to document
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
 
   return (
     <>
       <Loader isLoading={isLoading} />
       <div className="min-h-screen bg-background">
-        <Navbar isDark={isDark} toggleTheme={() => setIsDark(!isDark)} />
+        <Navbar isDark={isDark} toggleTheme={toggleTheme} />
         <main>
-          <Hero /> {/* 👈 Correct usage */}
+          <Hero />
           <About />
           <Projects />
+          <Services />
           <Contact />
         </main>
         <Footer />
