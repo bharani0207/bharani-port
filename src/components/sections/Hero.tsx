@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-scroll";
 import { Menu, X } from "lucide-react";
 
-export function Navbar({ isDark, toggleTheme }: any) {
+type NavbarProps = {
+  isDark: boolean;
+  toggleTheme: () => void;
+};
+
+export function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // 👇 Services removed here
   const navItems = [
-    { label: "Home", href: "home" },
-    { label: "About", href: "about" },
-    { label: "Projects", href: "projects" },
-    { label: "Contact", href: "contact" },
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -17,60 +22,61 @@ export function Navbar({ isDark, toggleTheme }: any) {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="font-bold text-xl">Bharanishwar</h1>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-8">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.href}
-              to={item.href}
-              smooth={true}
-              duration={600}
-              className="cursor-pointer text-foreground hover:text-primary transition-colors"
+              href={item.href}
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
+
+        {/* Theme toggle (desktop) */}
+          <button
+            onClick={toggleTheme}
+            className="ml-4 text-xs px-3 py-1 border rounded-full"
+          >
+            {isDark ? "Light mode" : "Dark mode"}
+          </button>
         </div>
 
-        {/* Theme Toggle (Optional if you use one) */}
-        <button
-          onClick={toggleTheme}
-          className="hidden md:inline-flex ml-4 text-sm px-3 py-1 border rounded-full"
-        >
-          {isDark ? "Light Mode" : "Dark Mode"}
-        </button>
-
-        {/* Mobile Menu */}
+        {/* Mobile menu button */}
         <button
           className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile dropdown */}
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center space-y-4 py-4 bg-background border-t border-foreground/10">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              smooth={true}
-              duration={600}
-              className="cursor-pointer text-lg text-foreground hover:text-primary"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div className="md:hidden bg-background border-t border-foreground/10">
+          <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-base text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
 
-          <button
-            onClick={toggleTheme}
-            className="text-sm px-3 py-1 border rounded-full"
-          >
-            {isDark ? "Light Mode" : "Dark Mode"}
-          </button>
+            <button
+              onClick={() => {
+                toggleTheme();
+                setIsOpen(false);
+              }}
+              className="mt-2 text-xs px-3 py-1 border rounded-full self-start"
+            >
+              {isDark ? "Light mode" : "Dark mode"}
+            </button>
+          </div>
         </div>
       )}
     </nav>
