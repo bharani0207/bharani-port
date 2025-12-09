@@ -9,7 +9,7 @@ type NavbarProps = {
 export function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // 👇 Services removed here
+  // Services removed ❌
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
@@ -22,7 +22,7 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="font-bold text-xl">Bharanishwar</h1>
 
-        {/* Desktop nav */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <a
@@ -33,26 +33,21 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
               {item.label}
             </a>
           ))}
-
-        {/* Theme toggle (desktop) */}
           <button
             onClick={toggleTheme}
             className="ml-4 text-xs px-3 py-1 border rounded-full"
           >
-            {isDark ? "Light mode" : "Dark mode"}
+            {isDark ? "Light Mode" : "Dark Mode"}
           </button>
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
+        {/* Mobile Toggle */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-background border-t border-foreground/10">
           <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
@@ -66,7 +61,6 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
                 {item.label}
               </a>
             ))}
-
             <button
               onClick={() => {
                 toggleTheme();
@@ -74,7 +68,7 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
               }}
               className="mt-2 text-xs px-3 py-1 border rounded-full self-start"
             >
-              {isDark ? "Light mode" : "Dark mode"}
+              {isDark ? "Light Mode" : "Dark Mode"}
             </button>
           </div>
         </div>
