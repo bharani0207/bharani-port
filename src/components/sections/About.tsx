@@ -172,9 +172,9 @@ export function About() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 mt-8">
               {[
-                { value: "50+", label: "Projects" },
-                { value: "5+", label: "Years Exp." },
-                { value: "30+", label: "Clients" },
+                { value: "3", label: "Projects" },
+                { value: "1", label: "Years Exp." },
+                { value: "2", label: "Clients" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
