@@ -8,7 +8,6 @@ const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
-  
   { name: "Contact", href: "#contact" },
 ];
 
@@ -26,7 +25,6 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Update active section based on scroll position
       const sections = navLinks.map((link) => link.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -63,7 +61,6 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
       )}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
         <motion.a
           href="#home"
           className="font-sora text-xl font-bold gradient-text"
@@ -136,18 +133,13 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
             Hire Me
           </Button>
 
-          {/* Mobile Menu Button */}
           <motion.button
             className="md:hidden p-2 rounded-lg bg-secondary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </motion.button>
         </div>
       </nav>
@@ -180,6 +172,7 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
                   {link.name}
                 </motion.button>
               ))}
+
               <Button
                 variant="hero"
                 className="mt-2"
