@@ -109,7 +109,7 @@ export function Hero() {
 
             {/* Resume - Opens in New Tab */}
             <Button asChild variant="heroOutline" size="xl" className="group">
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="https://drive.google.com/file/d/1Qne0t-R2E1pIUgMfjXWcTCMYAiUQ0c0q/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
                 <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
                 <span className="ml-2">Download Resume</span>
               </a>
